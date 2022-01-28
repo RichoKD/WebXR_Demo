@@ -28,8 +28,9 @@
         <div id="unity-webgl-logo"></div>
         <!-- <button id="entervr" value="Enter VR" disabled>VR</button>
         <button id="enterar" value="Enter AR" disabled>AR</button>
-        <div id="unity-webxr-link">Using <a href="https://github.com/De-Panther/unity-webxr-export" target="_blank" title="WebXR Export">WebXR Export</a></div> -->
-        <!-- <div id="unity-fullscreen-button"></div> -->
+        <div id="unity-fullscreen-button"></div> -->
+        <div id="unity-webxr-link">Using <a href="https://github.com/De-Panther/unity-webxr-export" target="_blank" title="WebXR Export">WebXR Export</a></div>
+
         <div id="unity-build-title">WebGL</div>
       </div>
     </div>
@@ -70,15 +71,17 @@
         }).then((instance) => {
           unityInstance = instance;
           loadingBar.style.display = "none";
-          // if (fullscreenButton)
-         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
-          {
-            fullscreenButton.visibility = "visible";
-            fullscreenButton.onclick = () => {
-              unityInstance.SetFullscreen(1);
-              
-            };
-          }
+          if (fullscreenButton){
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+              {
+                fullscreenButton.style.visibility = "visible";
+
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                  
+                };
+              }
+        }
         }).catch((message) => {
           alert(message);
         });
